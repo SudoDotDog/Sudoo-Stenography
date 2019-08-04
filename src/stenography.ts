@@ -25,18 +25,20 @@ export class Stenography {
 
     public mount(): this {
 
-        document.addEventListener('keypress', this._listener);
+        document.addEventListener('keydown', this._listener);
         return this;
     }
 
     public unmount(): this {
 
-        document.removeEventListener('keypress', this._listener);
+        document.removeEventListener('keydown', this._listener);
         return this;
     }
 
     private _listener(event: KeyboardEvent): void {
 
+        event.preventDefault();
+        event.stopPropagation();
         console.log(event);
     }
 }
