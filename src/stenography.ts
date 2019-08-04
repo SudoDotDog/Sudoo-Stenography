@@ -35,12 +35,15 @@ export class Stenography {
 
     private readonly _matcher: Matcher;
     private _buffer: string[];
+    private _active: boolean;
 
     private constructor() {
 
-        this._listener = this._listener.bind(this);
         this._matcher = Matcher.create();
         this._buffer = [];
+        this._active = true;
+
+        this._listener = this._listener.bind(this);
     }
 
     public get matcher(): Matcher {
@@ -60,6 +63,18 @@ export class Stenography {
         return this;
     }
 
+    public pause(): this {
+
+        this._active = false;
+        return this;
+    }
+
+    public resume(): this {
+
+        this._active = true;
+        return this;
+    }
+
     private _resetBuffer(): this {
 
         this._buffer = [];
@@ -67,6 +82,10 @@ export class Stenography {
     }
 
     private _listener(event: KeyboardEvent): void {
+
+        if (!this._active) {
+            return;
+        }
 
         const expression: string = parseEvent(event);
         this._buffer = [...this._buffer, expression];
