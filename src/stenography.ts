@@ -6,7 +6,7 @@
 
 import { Interceptor } from "./declare";
 import { Matcher } from "./match";
-import { parseEvent } from "./util";
+import { isPureLetter, parseEvent } from "./util";
 
 export class Stenography {
 
@@ -34,6 +34,7 @@ export class Stenography {
     }
 
     private readonly _matcher: Matcher;
+    private _timer: any = undefined;
     private _buffer: string[];
     private _active: boolean;
 
@@ -43,6 +44,7 @@ export class Stenography {
         this._buffer = [];
         this._active = true;
 
+        this._resetBuffer = this._resetBuffer.bind(this);
         this._listener = this._listener.bind(this);
     }
 
@@ -87,8 +89,12 @@ export class Stenography {
             return;
         }
 
+        if (!this._checkTarget(event)) {
+            return;
+        }
+
         const expression: string = parseEvent(event);
-        this._buffer = [...this._buffer, expression];
+        this._buff(expression);
 
         const matched: Interceptor | null = this._matcher.match(this._buffer);
 
@@ -96,10 +102,28 @@ export class Stenography {
 
             event.preventDefault();
             event.stopPropagation();
-            console.log(event);
+
+        }
+        return;
+    }
+
+    private _checkTarget(event: KeyboardEvent): boolean {
+
+        if (!isPureLetter(event)) {
+            return true;
         }
 
-        this._resetBuffer();
-        return;
+        const target: any = event.target;
+        if (target.nodeName === 'INPUT') {
+            return false;
+        }
+        return true;
+    }
+
+    private _buff(expression: string) {
+
+        clearTimeout(this._timer);
+        this._timer = setTimeout(this._resetBuffer, 1000);
+        this._buffer = [...this._buffer, expression];
     }
 }

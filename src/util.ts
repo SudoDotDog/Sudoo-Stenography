@@ -15,6 +15,23 @@ export const compareArray = <T>(first: T[], second: T[]): boolean => {
     return first.every((each: T, index: number) => each === second[index]);
 };
 
+export const isPureLetter = (event: KeyboardEvent): boolean => {
+
+    if (event.ctrlKey) {
+        return false;
+    }
+
+    if (event.altKey) {
+        return false;
+    }
+
+    if (event.shiftKey) {
+        return false;
+    }
+
+    return true;
+};
+
 export const parseEvent = (event: KeyboardEvent): string => {
 
     const result: string[] = [];

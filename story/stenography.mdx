@@ -3,12 +3,12 @@ name: Stenography
 ---
 
 import { Playground } from 'docz';
-import { Stenography } from "../src";
+import { mount } from "./stenography";
 
 # Stenography
 
 <Playground>
-  {(Stenography.register().matcher.listen(['ctrl+s'], () => undefined), 'Mounted')}
+  {mount()}
   <div>
     Input
     <input></input>
