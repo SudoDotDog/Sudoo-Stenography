@@ -66,14 +66,23 @@ export const parseEvent = (event: KeyboardEvent): string => {
     const result: string[] = [];
 
     if (event.ctrlKey) {
+        if (event.key === 'control') {
+            return event.key;
+        }
         result.push(controlKeyText);
     }
 
     if (event.altKey) {
+        if (event.key === 'alt') {
+            return event.key;
+        }
         result.push(altKeyText);
     }
 
     if (event.shiftKey) {
+        if (event.key === 'shift') {
+            return event.key;
+        }
         result.push(shiftKeyText);
     }
 

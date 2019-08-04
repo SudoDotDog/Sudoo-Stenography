@@ -10,35 +10,22 @@ import { isPureLetter, parseEvent } from "./util";
 
 export class Stenography {
 
-    public static register(): Stenography {
+    public static create(node: any): Stenography {
 
-        const instance: Stenography = this._getInstance();
+        const instance: Stenography = new Stenography(node);
         instance.mount();
         return instance;
     }
 
-    public static get instance(): Stenography {
-
-        return this._getInstance();
-    }
-
-    private static _instance: Stenography | null;
-
-    private static _getInstance(): Stenography {
-
-        if (!this._instance) {
-            this._instance = new Stenography();
-        }
-
-        return this._instance;
-    }
-
+    private readonly _node: any;
     private readonly _matcher: Matcher;
     private _timer: any = undefined;
     private _buffer: string[];
     private _active: boolean;
 
-    private constructor() {
+    private constructor(node: any) {
+
+        this._node = node;
 
         this._matcher = Matcher.create();
         this._buffer = [];
@@ -46,6 +33,11 @@ export class Stenography {
 
         this._resetBuffer = this._resetBuffer.bind(this);
         this._listener = this._listener.bind(this);
+    }
+
+    public get node(): any {
+
+        return this._node;
     }
 
     public get matcher(): Matcher {
@@ -56,13 +48,19 @@ export class Stenography {
     public mount(): this {
 
         this.unmount();
-        document.addEventListener('keydown', this._listener);
+        if (this._node && this._node.addEventListener) {
+
+            document.addEventListener('keydown', this._listener);
+        }
         return this;
     }
 
     public unmount(): this {
 
-        document.removeEventListener('keydown', this._listener);
+        if (this._node && this._node.removeEventListener) {
+
+            document.removeEventListener('keydown', this._listener);
+        }
         return this;
     }
 
@@ -131,9 +129,9 @@ export class Stenography {
 
         clearTimeout(this._timer);
         this._timer = setTimeout(this._resetBuffer, 1000);
-        if (expression === 'ctrl+control'
-            || expression === 'ctrl+control'
-            || expression === 'ctrl+control') {
+        if (expression === 'control'
+            || expression === 'alt'
+            || expression === 'shift') {
             return false;
         }
         this._buffer = [...this._buffer, expression];
