@@ -3,14 +3,30 @@ name: Stenography
 ---
 
 import { Playground } from 'docz';
-import { mount } from "./stenography";
+import { Stenography } from "../src/stenography";
 
 # Stenography
 
 <Playground>
-  {mount()}
-  <div>
+  <Stenography
+    interceptors={[{
+        combo: ['a'],
+        callback: () => console.log('a')
+      }, {
+        combo: ['ctrl+s'],
+        callback: () => console.log('ctrl+s')
+      }, {
+        combo: ['alt+b'],
+        callback: () => console.log('alt+b')
+      }, {
+        combo: ['shift+c'],
+        callback: () => console.log('shift+c')
+      }, {
+        combo: ['up', 'up', 'down', 'down', 'left', 'right', 'left', 'right', 'b', 'a'],
+        callback: () => console.log('WOW')
+      }]}
+  >
     Input
     <input></input>
-  </div>
+  </Stenography>
 </Playground>

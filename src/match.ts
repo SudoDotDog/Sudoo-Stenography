@@ -4,7 +4,7 @@
  * @description Match
  */
 
-import { Interceptor } from "./declare";
+import { Interceptor, KeyboardCallback } from "./declare";
 import { compareArray } from "./util";
 
 export class Matcher {
@@ -21,7 +21,19 @@ export class Matcher {
         this._interceptors = [];
     }
 
-    public listen(combo: string[], callback: () => void): this {
+    public listenList(interceptors: Interceptor[]): this {
+
+        if (!Array.isArray(interceptors)) {
+            return this;
+        }
+
+        for (const interceptor of interceptors) {
+            this.listen(interceptor.combo, interceptor.callback);
+        }
+        return this;
+    }
+
+    public listen(combo: string[], callback: KeyboardCallback): this {
 
         this._interceptors.push({
             combo,

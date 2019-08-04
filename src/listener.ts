@@ -1,31 +1,28 @@
 /**
  * @author WMXPY
  * @namespace Stenography
- * @description Stenography
+ * @description Listener
  */
 
 import { Interceptor } from "./declare";
 import { Matcher } from "./match";
 import { isPureLetter, parseEvent } from "./util";
 
-export class Stenography {
+export class Listener {
 
-    public static create(node: any): Stenography {
+    public static create(): Listener {
 
-        const instance: Stenography = new Stenography(node);
+        const instance: Listener = new Listener();
         instance.mount();
         return instance;
     }
 
-    private readonly _node: any;
     private readonly _matcher: Matcher;
     private _timer: any = undefined;
     private _buffer: string[];
     private _active: boolean;
 
-    private constructor(node: any) {
-
-        this._node = node;
+    private constructor() {
 
         this._matcher = Matcher.create();
         this._buffer = [];
@@ -33,11 +30,6 @@ export class Stenography {
 
         this._resetBuffer = this._resetBuffer.bind(this);
         this._listener = this._listener.bind(this);
-    }
-
-    public get node(): any {
-
-        return this._node;
     }
 
     public get matcher(): Matcher {
@@ -48,19 +40,13 @@ export class Stenography {
     public mount(): this {
 
         this.unmount();
-        if (this._node && this._node.addEventListener) {
-
-            document.addEventListener('keydown', this._listener);
-        }
+        document.addEventListener('keydown', this._listener);
         return this;
     }
 
     public unmount(): this {
 
-        if (this._node && this._node.removeEventListener) {
-
-            document.removeEventListener('keydown', this._listener);
-        }
+        document.removeEventListener('keydown', this._listener);
         return this;
     }
 
