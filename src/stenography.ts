@@ -96,6 +96,8 @@ export class Stenography {
         const expression: string = parseEvent(event);
         this._buff(expression);
 
+        console.log(this._buffer);
+
         const matched: Interceptor | null = this._matcher.match(this._buffer);
 
         if (matched) {
@@ -124,6 +126,11 @@ export class Stenography {
 
         clearTimeout(this._timer);
         this._timer = setTimeout(this._resetBuffer, 1000);
+        if (expression === 'ctrl+control'
+            || expression === 'ctrl+control'
+            || expression === 'ctrl+control') {
+            return;
+        }
         this._buffer = [...this._buffer, expression];
     }
 }

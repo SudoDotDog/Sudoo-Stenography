@@ -17,6 +17,7 @@ export const compareArray = <T>(first: T[], second: T[]): boolean => {
 
 export const isPureLetter = (event: KeyboardEvent): boolean => {
 
+    console.log(event);
     if (event.ctrlKey) {
         return false;
     }
