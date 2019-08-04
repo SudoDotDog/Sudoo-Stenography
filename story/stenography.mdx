@@ -8,7 +8,7 @@ import { Stenography } from "../src";
 # Stenography
 
 <Playground>
-  {(Stenography.register(), 'Mounted')}
+  {(Stenography.register().matcher.listen(['ctrl+s'], () => undefined), 'Mounted')}
   <div>
     Input
     <input></input>
