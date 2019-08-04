@@ -4,7 +4,15 @@
  * @description Util
  */
 
-import { altKeyText, controlKeyText, shiftKeyText } from "./declare";
+import { altKeyText, arrowDownKeyText, arrowLeftKeyText, arrowRightKeyText, arrowUpKeyText, controlKeyText, shiftKeyText } from "./declare";
+
+const keyMap: Record<string, string> = {
+
+    ArrowUp: arrowUpKeyText,
+    ArrowDown: arrowDownKeyText,
+    ArrowLeft: arrowLeftKeyText,
+    ArrowRight: arrowRightKeyText,
+};
 
 export const compareArray = <T>(first: T[], second: T[]): boolean => {
 
@@ -15,9 +23,29 @@ export const compareArray = <T>(first: T[], second: T[]): boolean => {
     return first.every((each: T, index: number) => each === second[index]);
 };
 
+export const isLetter = (key: string): boolean => {
+
+    if (keyMap[key]) {
+        return false;
+    }
+    return true;
+};
+
+export const parseLetter = (key: string): string => {
+
+    const newKey: string | undefined = keyMap[key];
+    if (newKey) {
+        return newKey;
+    }
+    return key.toLowerCase();
+};
+
 export const isPureLetter = (event: KeyboardEvent): boolean => {
 
-    console.log(event);
+    if (!isLetter(event.key)) {
+        return false;
+    }
+
     if (event.ctrlKey) {
         return false;
     }
@@ -49,6 +77,8 @@ export const parseEvent = (event: KeyboardEvent): string => {
         result.push(shiftKeyText);
     }
 
-    result.push(event.key.toLowerCase());
+    const key: string = parseLetter(event.key);
+
+    result.push(key);
     return result.join('+');
 };

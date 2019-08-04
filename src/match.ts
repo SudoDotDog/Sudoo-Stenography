@@ -32,11 +32,17 @@ export class Matcher {
 
     public match(combo: string[]): Interceptor | null {
 
-        for (const interceptor of this._interceptors) {
-            if (compareArray(combo, interceptor.combo)) {
-                return interceptor;
+        const length: number = combo.length;
+        for (let i = 0; i < length; i++) {
+
+            const slice: string[] = combo.slice(i, length);
+            for (const interceptor of this._interceptors) {
+                if (compareArray(slice, interceptor.combo)) {
+                    return interceptor;
+                }
             }
         }
+
         return null;
     }
 }

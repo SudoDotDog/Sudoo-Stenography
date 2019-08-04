@@ -8,6 +8,6 @@ import { Stenography } from "../src";
 
 export const mount = (): string => {
 
-    Stenography.register().matcher.listen(['s'], () => undefined);
+    Stenography.register().matcher.listen(['up', 'up', 'down', 'down', 'left', 'right', 'left', 'right', 'b', 'a'], () => console.log('hitten'));
     return 'Mounted';
 };

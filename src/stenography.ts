@@ -55,6 +55,7 @@ export class Stenography {
 
     public mount(): this {
 
+        this.unmount();
         document.addEventListener('keydown', this._listener);
         return this;
     }
@@ -94,17 +95,21 @@ export class Stenography {
         }
 
         const expression: string = parseEvent(event);
-        this._buff(expression);
+        const shouldContinue: boolean = this._buff(expression);
+        if (shouldContinue) {
 
-        console.log(this._buffer);
+            const matched: Interceptor | null = this._matcher.match(this._buffer);
 
-        const matched: Interceptor | null = this._matcher.match(this._buffer);
+            if (matched) {
 
-        if (matched) {
 
-            event.preventDefault();
-            event.stopPropagation();
+                event.preventDefault();
+                event.stopPropagation();
 
+                matched.callback(this._buffer);
+                clearTimeout(this._timer);
+                this._resetBuffer();
+            }
         }
         return;
     }
@@ -122,15 +127,16 @@ export class Stenography {
         return true;
     }
 
-    private _buff(expression: string) {
+    private _buff(expression: string): boolean {
 
         clearTimeout(this._timer);
         this._timer = setTimeout(this._resetBuffer, 1000);
         if (expression === 'ctrl+control'
             || expression === 'ctrl+control'
             || expression === 'ctrl+control') {
-            return;
+            return false;
         }
         this._buffer = [...this._buffer, expression];
+        return true;
     }
 }
