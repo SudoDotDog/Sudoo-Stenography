@@ -61,7 +61,7 @@ export const isPureLetter = (event: KeyboardEvent): boolean => {
     return true;
 };
 
-export const parseEvent = (event: KeyboardEvent): string => {
+export const parseEvent = (event: KeyboardEvent, mix: string = '+'): string => {
 
     const result: string[] = [];
 
@@ -89,5 +89,5 @@ export const parseEvent = (event: KeyboardEvent): string => {
     const key: string = parseLetter(event.key);
 
     result.push(key);
-    return result.join('+');
+    return result.join(mix);
 };

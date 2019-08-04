@@ -26,7 +26,6 @@ export class Matcher {
         if (!Array.isArray(interceptors)) {
             return this;
         }
-
         for (const interceptor of interceptors) {
             this.listen(interceptor.combo, interceptor.callback);
         }
@@ -54,7 +53,6 @@ export class Matcher {
                 }
             }
         }
-
         return null;
     }
 }
