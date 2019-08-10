@@ -20,7 +20,10 @@
     "react": "*",
     "react-dom": "*"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@bwnl/shiny-inline": "^1.0.0",
+    "@sudoo/jss": "^1.2.1"
+  },
   "devDependencies": {
     "@sudoo/io": "^1.6.1",
     "@sudoo/mock": "^1.2.0",
