@@ -37,6 +37,11 @@ export class StenographyConfig {
         return this;
     }
 
+    public getVisibleInterceptors(): StenographyInterceptor[] {
+
+        return this._interceptors.filter((interceptor: StenographyInterceptor) => !interceptor.isHidden);
+    }
+
     public match(combo: string[]): StenographyInterceptor | null {
 
         const length: number = combo.length;

@@ -29,26 +29,30 @@ export class Recipe extends React.Component<RecipeProps> {
     public render() {
 
         const config: StenographyConfig = this.props.config;
+        const interceptors: StenographyInterceptor[] = config.getVisibleInterceptors();
 
         return (<div
             style={{
-                gridTemplateRows: `repeat(${this._getColumns()},1fr)`,
+                gridTemplateRows: `repeat(${this._getColumns(interceptors.length)},1fr)`,
             }}
             className={this._style.wrapper}
         >
-            {config.interceptors.map(this._renderInterceptor)}
+            {interceptors.map(this._renderInterceptor)}
         </div>);
     }
 
     private _renderInterceptor(interceptor: StenographyInterceptor, index: number) {
 
+        const description: string | undefined = interceptor.description;
+
         return (<div key={index}>
             <div>{interceptor.combo.toString()}</div>
+            {description && <div>{description}</div>}
         </div>);
     }
 
-    private _getColumns(): number {
+    private _getColumns(length: number): number {
 
-        return Math.ceil(this.props.config.length / 2);
+        return Math.ceil(length / 2);
     }
 }
