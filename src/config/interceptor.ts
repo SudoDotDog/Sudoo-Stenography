@@ -4,10 +4,24 @@
  * @description Interceptor
  */
 
-import { InterceptorCallback } from "./declare";
+import { InterceptorCallback, InterceptorStructure } from "./declare";
 import { EASTER_EGG_NAME, stenographyEasterEgg } from "./egg";
 
 export class StenographyInterceptor {
+
+    public static with(structure: InterceptorStructure): StenographyInterceptor {
+
+        const interceptor: StenographyInterceptor = new StenographyInterceptor(structure.combos, structure.hidden || false);
+        if (structure.name) {
+            interceptor.setName(structure.name);
+        }
+        if (structure.description) {
+            interceptor.setDescription(structure.description);
+        }
+        interceptor.then(structure.callback);
+
+        return interceptor;
+    }
 
     public static when(...combos: string[]): StenographyInterceptor {
 

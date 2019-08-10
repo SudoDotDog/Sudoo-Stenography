@@ -5,9 +5,19 @@
  */
 
 import { compareArray } from "../util";
+import { InterceptorStructure } from "./declare";
 import { StenographyInterceptor } from "./interceptor";
 
 export class StenographyConfig {
+
+    public static withStructures(structures: InterceptorStructure[]) {
+
+        const config: StenographyConfig = new StenographyConfig();
+        for (const structure of structures) {
+            config.add(StenographyInterceptor.with(structure));
+        }
+        return config;
+    }
 
     public static create(): StenographyConfig {
 
