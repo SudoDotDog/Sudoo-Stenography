@@ -4,8 +4,8 @@
  * @description Match
  */
 
-import { Interceptor, KeyboardCallback } from "./declare";
-import { compareArray } from "./util";
+import { Interceptor, KeyboardCallback } from "../declare";
+import { compareArray } from "../util";
 
 export class Matcher {
 

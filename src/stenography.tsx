@@ -6,7 +6,7 @@
 
 import * as React from "react";
 import { Interceptor } from "./declare";
-import { Listener } from "./listener";
+import { Listener } from "./listener/listener";
 
 export type StenographyProps = {
 

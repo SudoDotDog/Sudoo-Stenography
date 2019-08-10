@@ -5,8 +5,8 @@
  */
 
 export * from "./declare";
-export * from "./egg";
-export * from "./listener";
-export * from "./match";
+export * from "./listener/egg";
+export * from "./listener/listener";
+export * from "./listener/match";
 export * from "./stenography";
 

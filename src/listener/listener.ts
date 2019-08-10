@@ -4,9 +4,9 @@
  * @description Listener
  */
 
-import { Interceptor } from "./declare";
+import { Interceptor } from "../declare";
+import { isPureLetter, parseEvent } from "../util";
 import { Matcher } from "./match";
-import { isPureLetter, parseEvent } from "./util";
 
 export class Listener {
 
