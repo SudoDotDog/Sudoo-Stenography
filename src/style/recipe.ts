@@ -8,10 +8,10 @@ import { JSSStyle, StyleManager } from "@sudoo/jss";
 
 const RecipeStyleBase: JSSStyle = {
 
-    grid: {
+    wrapper: {
         display: 'grid',
-        gridAutoRows: 'column',
-        backgroundColor: 'red',
+        gridAutoFlow: 'column',
+        gridTemplateColumns: 'repeat(2, 1fr)',
     },
 };
 

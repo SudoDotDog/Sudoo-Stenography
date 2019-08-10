@@ -22,4 +22,4 @@ const KeyboardStyleBase: JSSStyle = {
     },
 };
 
-export const KeyboardStyle: StyleManager = StyleManager.create(KeyboardStyleBase, 'Keyboard').setPrefix('BWNL-');
+export const KeyboardStyle: StyleManager = StyleManager.create(KeyboardStyleBase, 'Keyboard').setPrefix('BWNL-Stenography-');
