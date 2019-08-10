@@ -13,4 +13,4 @@ export const arrowDownKeyText: string = 'down';
 export const arrowLeftKeyText: string = 'left';
 export const arrowRightKeyText: string = 'right';
 
-export type InterceptorCallback = (combo: string[]) => void;
+export type InterceptorCallback = (combos: string[]) => void;

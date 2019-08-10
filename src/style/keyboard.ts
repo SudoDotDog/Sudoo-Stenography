@@ -10,6 +10,7 @@ import { JSSStyle, StyleManager } from "@sudoo/jss";
 const KeyboardStyleBase: JSSStyle = {
 
     key: {
+        lineHeight: '18px',
         border: `1px solid ${NAVY}`,
         display: 'inline-block',
         borderRadius: '3px',

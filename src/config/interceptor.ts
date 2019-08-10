@@ -9,9 +9,9 @@ import { EASTER_EGG_NAME, stenographyEasterEgg } from "./egg";
 
 export class StenographyInterceptor {
 
-    public static when(...combo: string[]): StenographyInterceptor {
+    public static when(...combos: string[]): StenographyInterceptor {
 
-        return new StenographyInterceptor(combo, false);
+        return new StenographyInterceptor(combos, false);
     }
 
     public static whenEasterEgg(name: EASTER_EGG_NAME) {
@@ -19,23 +19,29 @@ export class StenographyInterceptor {
         return new StenographyInterceptor(stenographyEasterEgg[name], true);
     }
 
-    private readonly _combo: string[];
+    private readonly _combos: string[];
 
+    private _name?: string;
     private _description?: string;
     private _hidden: boolean;
 
     private _callback: InterceptorCallback | null = null;
 
-    private constructor(combo: string[], hidden: boolean) {
+    private constructor(combos: string[], hidden: boolean) {
 
-        this._combo = combo;
+        this._combos = combos;
 
         this._hidden = hidden;
     }
 
-    public get combo(): string[] {
+    public get combos(): string[] {
 
-        return this._combo;
+        return this._combos;
+    }
+
+    public get name(): string | undefined {
+
+        return this._name;
     }
 
     public get description(): string | undefined {
@@ -60,6 +66,12 @@ export class StenographyInterceptor {
         return this;
     }
 
+    public setName(name: string): this {
+
+        this._name = name;
+        return this;
+    }
+
     public setDescription(description: string): this {
 
         this._description = description;
@@ -72,10 +84,10 @@ export class StenographyInterceptor {
         return this;
     }
 
-    public execute(combo?: string[]): void {
+    public execute(combos?: string[]): void {
 
         if (this._callback && typeof this._callback === 'function') {
-            this._callback(combo || this._combo);
+            this._callback(combos || this._combos);
         }
     }
 }

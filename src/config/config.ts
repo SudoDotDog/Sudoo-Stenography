@@ -42,14 +42,14 @@ export class StenographyConfig {
         return this._interceptors.filter((interceptor: StenographyInterceptor) => !interceptor.isHidden);
     }
 
-    public match(combo: string[]): StenographyInterceptor | null {
+    public match(combos: string[]): StenographyInterceptor | null {
 
-        const length: number = combo.length;
+        const length: number = combos.length;
         for (let i = 0; i < length; i++) {
 
-            const slice: string[] = combo.slice(i, length);
+            const slice: string[] = combos.slice(i, length);
             for (const interceptor of this._interceptors) {
-                if (compareArray(slice, interceptor.combo)) {
+                if (compareArray(slice, interceptor.combos)) {
                     return interceptor;
                 }
             }

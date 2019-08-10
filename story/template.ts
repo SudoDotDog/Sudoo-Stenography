@@ -17,7 +17,7 @@ config.add(
 config.add(
     StenographyInterceptor
         .when('ctrl+s')
-        .setDescription('Log ctrl+s')
+        .setName('Example Save')
         .then(() => console.log('ctrl+s')),
 );
 config.add(
@@ -28,8 +28,14 @@ config.add(
 );
 config.add(
     StenographyInterceptor
+        .when('g', 'ctrl+d')
+        .setName('Example Combo')
+        .setDescription('Log g then d')
+        .then(() => console.log('g then d')),
+);
+config.add(
+    StenographyInterceptor
         .when('shift+c')
-        .setDescription('Log shift+c')
         .then(() => console.log('shift+c')),
 );
 config.add(
