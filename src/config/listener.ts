@@ -4,37 +4,34 @@
  * @description Listener
  */
 
-import { Interceptor } from "../declare";
 import { isPureLetter, parseEvent } from "../util";
-import { Matcher } from "./match";
+import { StenographyConfig } from "./config";
+import { StenographyInterceptor } from "./interceptor";
 
 export class Listener {
 
-    public static create(): Listener {
+    public static create(config: StenographyConfig): Listener {
 
-        const instance: Listener = new Listener();
+        const instance: Listener = new Listener(config);
         instance.mount();
         return instance;
     }
 
-    private readonly _matcher: Matcher;
+    private readonly _config: StenographyConfig;
+
     private _timer: any = undefined;
     private _buffer: string[];
     private _active: boolean;
 
-    private constructor() {
+    private constructor(config: StenographyConfig) {
 
-        this._matcher = Matcher.create();
+        this._config = config;
+
         this._buffer = [];
         this._active = true;
 
         this._resetBuffer = this._resetBuffer.bind(this);
         this._listener = this._listener.bind(this);
-    }
-
-    public get matcher(): Matcher {
-
-        return this._matcher;
     }
 
     public mount(): this {
@@ -82,7 +79,7 @@ export class Listener {
         const shouldContinue: boolean = this._buff(expression);
         if (shouldContinue) {
 
-            const matched: Interceptor | null = this._matcher.match(this._buffer);
+            const matched: StenographyInterceptor | null = this._config.match(this._buffer);
 
             if (matched) {
 
@@ -90,7 +87,7 @@ export class Listener {
                 event.preventDefault();
                 event.stopPropagation();
 
-                matched.callback(this._buffer);
+                matched.execute(this._buffer);
                 clearTimeout(this._timer);
                 this._resetBuffer();
             }

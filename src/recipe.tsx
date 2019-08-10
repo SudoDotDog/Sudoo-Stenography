@@ -6,12 +6,13 @@
 
 import { Classes } from "jss";
 import * as React from "react";
-import { Interceptor } from "./declare";
+import { StenographyConfig } from "./config/config";
+import { StenographyInterceptor } from "./config/interceptor";
 import { RecipeStyle } from "./style/recipe";
 
 export type RecipeProps = {
 
-    readonly interceptors: Interceptor[];
+    readonly config: StenographyConfig;
 };
 
 export class Recipe extends React.Component<RecipeProps> {
@@ -27,25 +28,27 @@ export class Recipe extends React.Component<RecipeProps> {
 
     public render() {
 
+        const config: StenographyConfig = this.props.config;
+
         return (<div
             style={{
                 gridTemplateRows: `repeat(${this._getColumns()},1fr)`,
             }}
             className={this._style.wrapper}
         >
-            {this.props.interceptors.map(this._renderInterceptor)}
+            {config.interceptors.map(this._renderInterceptor)}
         </div>);
     }
 
-    private _renderInterceptor(interceptor: Interceptor, index: number) {
+    private _renderInterceptor(interceptor: StenographyInterceptor, index: number) {
 
-        return (<div>
+        return (<div key={index}>
             <div>{interceptor.combo.toString()}</div>
         </div>);
     }
 
     private _getColumns(): number {
 
-        return Math.ceil(this.props.interceptors.length / 2);
+        return Math.ceil(this.props.config.length / 2);
     }
 }

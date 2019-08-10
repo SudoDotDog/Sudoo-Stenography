@@ -4,7 +4,7 @@
  * @description Util
  */
 
-import { altKeyText, arrowDownKeyText, arrowLeftKeyText, arrowRightKeyText, arrowUpKeyText, controlKeyText, shiftKeyText } from "./declare";
+import { altKeyText, arrowDownKeyText, arrowLeftKeyText, arrowRightKeyText, arrowUpKeyText, controlKeyText, shiftKeyText } from "./config/declare";
 
 const keyMap: Record<string, string> = {
 

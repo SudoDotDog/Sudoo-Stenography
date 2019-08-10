@@ -5,12 +5,12 @@
  */
 
 import * as React from "react";
-import { Interceptor } from "./declare";
-import { Listener } from "./listener/listener";
+import { StenographyConfig } from "./config/config";
+import { Listener } from "./config/listener";
 
 export type StenographyProps = {
 
-    readonly interceptors: Interceptor[];
+    readonly config: StenographyConfig;
 };
 
 export class Stenography extends React.Component<StenographyProps> {
@@ -19,8 +19,7 @@ export class Stenography extends React.Component<StenographyProps> {
 
     public componentDidMount() {
 
-        this._listener = Listener.create();
-        this._listener.matcher.listenList(this.props.interceptors);
+        this._listener = Listener.create(this.props.config);
     }
 
     public componentWillUnmount() {
