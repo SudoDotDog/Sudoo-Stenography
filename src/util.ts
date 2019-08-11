@@ -4,7 +4,7 @@
  * @description Util
  */
 
-import { altKeyText, arrowDownKeyText, arrowLeftKeyText, arrowRightKeyText, arrowUpKeyText, backspaceKeyText, capsLockKeyText, commandKeyText, controlKeyText, enterKeyText, shiftKeyText, spaceKeyText, tabKeyText, escapeKeyText } from "./config/declare";
+import { altKeyText, arrowDownKeyText, arrowLeftKeyText, arrowRightKeyText, arrowUpKeyText, backspaceKeyText, capsLockKeyText, commandKeyText, controlKeyText, divideKeyText, enterKeyText, escapeKeyText, minusKeyText, plusKeyText, shiftKeyText, spaceKeyText, tabKeyText, timesKeyText } from "./config/declare";
 
 const keyMap: Record<string, string> = {
 
@@ -17,6 +17,10 @@ const keyMap: Record<string, string> = {
     Enter: enterKeyText,
     Backspace: backspaceKeyText,
     Escape: escapeKeyText,
+    '+': plusKeyText,
+    '-': minusKeyText,
+    '*': timesKeyText,
+    '/': divideKeyText,
 
     ' ': spaceKeyText,
 };
@@ -116,6 +120,11 @@ export const parseKey = (key: string): string => {
         case enterKeyText: return '⏎ Enter';
         case backspaceKeyText: return '⌫ Backspace';
         case escapeKeyText: return '⎋ Escape';
+
+        case plusKeyText: return '+';
+        case minusKeyText: return '-';
+        case timesKeyText: return '*';
+        case divideKeyText: return '/';
 
         default: return key;
     }

@@ -21,6 +21,11 @@ export const arrowRightKeyText: string = 'right';
 
 export const spaceKeyText: string = 'space';
 
+export const plusKeyText: string = 'plus';
+export const minusKeyText: string = 'minus';
+export const timesKeyText: string = 'times';
+export const divideKeyText: string = 'divide';
+
 export type InterceptorCallback = (combos: string[]) => void;
 
 export type InterceptorStructure = {

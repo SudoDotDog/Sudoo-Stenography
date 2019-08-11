@@ -10,10 +10,17 @@ const config: StenographyConfig = StenographyConfig.create();
 
 config.add(
     StenographyInterceptor
-        .when('+')
+        .when('=')
         .setName('Plus')
         .setDescription('Log +')
         .then(() => console.log('+')),
+);
+config.add(
+    StenographyInterceptor
+        .when('shift+plus')
+        .setName('Plus Combo')
+        .setDescription('Log shift+plus')
+        .then(() => console.log('shift+plus')),
 );
 config.add(
     StenographyInterceptor
