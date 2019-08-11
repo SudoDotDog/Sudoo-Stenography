@@ -45,6 +45,12 @@ export class StenographyInterceptor {
 
         this._combos = combos;
 
+        for (const combo of combos) {
+            if (!/[a-zA-Z0-9+]+/.test(combo)) {
+                throw new Error('Invalid Combo, only A-Z, a-z, 0-9 and + symbol is valid');
+            }
+        }
+
         this._hidden = hidden;
     }
 
