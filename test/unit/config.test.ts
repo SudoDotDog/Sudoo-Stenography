@@ -14,12 +14,12 @@ describe('Given {Config} class', (): void => {
 
     const chance: Chance.Chance = new Chance('stenography-config');
 
-    const a: string = 'a';
-    const b: string = 'b';
-    const c: string = 'c';
-    const d: string = 'd';
-    const e: string = 'e';
-    const f: string = 'f';
+    const a: string = chance.name();
+    const b: string = chance.name();
+    const c: string = chance.name();
+    const d: string = chance.name();
+    const e: string = chance.name();
+    const f: string = chance.name();
 
     it('should be able to calculate addable - simple', (): void => {
 

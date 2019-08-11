@@ -45,9 +45,13 @@ export class StenographyInterceptor {
 
         this._combos = combos;
 
+        if (combos.length < 1) {
+            throw new Error('Combo cannot be empty');
+        }
+
         for (const combo of combos) {
-            if (!/[a-zA-Z0-9+]+/.test(combo)) {
-                throw new Error('Invalid Combo, only A-Z, a-z, 0-9 and + symbol is valid');
+            if (combo.includes('**')) {
+                throw new Error('Symbol "**" is restricted for key combination');
             }
         }
 

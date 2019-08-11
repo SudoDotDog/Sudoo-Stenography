@@ -1,6 +1,6 @@
 {
   "name": "@sudoo/stenography",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": ":musical_keyboard: Keyboard listener for web",
   "main": "index.js",
   "directories": {

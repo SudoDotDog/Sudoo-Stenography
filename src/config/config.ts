@@ -70,13 +70,15 @@ export class StenographyConfig {
     public addable(interceptor: StenographyInterceptor): boolean {
 
         const combos: string[] = interceptor.combos;
+        const combosParsed: string = combos.join('***');
+
         for (const current of this._interceptors) {
 
-            if (combos.join('*').includes(current.combos.join('*'))) {
+            const currentParsed: string = current.combos.join('***');
+            if (combosParsed.includes(currentParsed)) {
                 return false;
             }
-
-            if (current.combos.join('*').includes(combos.join('*'))) {
+            if (currentParsed.includes(combosParsed)) {
                 return false;
             }
         }
