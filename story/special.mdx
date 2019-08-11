@@ -1,0 +1,17 @@
+---
+name: Special
+---
+
+import { Playground } from 'docz';
+import { Recipe } from "../src";
+import { config } from "./template"
+
+# Special
+
+<Playground>
+  <Recipe config={StenographyConfig.withStructures([{
+      name: 'Arrow',
+      combos: ['up', 'down', 'left', 'right'],
+      callback: () => undefined,
+  }])} />
+</Playground>
