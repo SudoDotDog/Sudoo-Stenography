@@ -3,8 +3,7 @@ name: Special
 ---
 
 import { Playground } from 'docz';
-import { Recipe } from "../src";
-import { config } from "./template"
+import { Recipe, StenographyConfig } from "../src";
 
 # Special
 
@@ -12,6 +11,46 @@ import { config } from "./template"
   <Recipe config={StenographyConfig.withStructures([{
       name: 'Arrow',
       combos: ['up', 'down', 'left', 'right'],
+      callback: () => undefined,
+  }, {
+      name: 'Control',
+      combos: ['ctrl'],
+      callback: () => undefined,
+  }, {
+      name: 'Shift',
+      combos: ['shift'],
+      callback: () => undefined,
+  }, {
+      name: 'Alt',
+      combos: ['alt'],
+      callback: () => undefined,
+  }, {
+      name: 'Backspace',
+      combos: ['backspace'],
+      callback: () => undefined,
+  }, {
+      name: 'Tab',
+      combos: ['tab'],
+      callback: () => undefined,
+  }, {
+      name: 'Capslock',
+      combos: ['capslock'],
+      callback: () => undefined,
+  }, {
+      name: 'Enter',
+      combos: ['enter'],
+      callback: () => undefined,
+  }, {
+      name: 'Space',
+      combos: ['space'],
+      callback: () => undefined,
+  }, {
+      name: 'Escape',
+      combos: ['escape'],
+      callback: () => undefined,
+  }, {
+      name: 'Command',
+      combos: ['cmd'],
       callback: () => undefined,
   }])} />
 </Playground>

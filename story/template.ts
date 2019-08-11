@@ -10,6 +10,19 @@ const config: StenographyConfig = StenographyConfig.create();
 
 config.add(
     StenographyInterceptor
+        .when('+')
+        .setName('Plus')
+        .setDescription('Log +')
+        .then(() => console.log('+')),
+);
+config.add(
+    StenographyInterceptor
+        .when('space')
+        .setDescription('Space')
+        .then(() => console.log('space')),
+);
+config.add(
+    StenographyInterceptor
         .when('a')
         .setDescription('Log a')
         .then(() => console.log('a')),
@@ -25,6 +38,13 @@ config.add(
         .when('alt+b')
         .setDescription('Log alt+b')
         .then(() => console.log('alt+b')),
+);
+config.add(
+    StenographyInterceptor
+        .when('ctrl+alt+b')
+        .setName('Multi')
+        .setDescription('Log ctrl+alt+b')
+        .then(() => console.log('ctrl+alt+b')),
 );
 config.add(
     StenographyInterceptor

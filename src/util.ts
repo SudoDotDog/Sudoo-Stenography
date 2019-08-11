@@ -4,7 +4,7 @@
  * @description Util
  */
 
-import { altKeyText, arrowDownKeyText, arrowLeftKeyText, arrowRightKeyText, arrowUpKeyText, controlKeyText, shiftKeyText } from "./config/declare";
+import { altKeyText, arrowDownKeyText, arrowLeftKeyText, arrowRightKeyText, arrowUpKeyText, backspaceKeyText, capsLockKeyText, commandKeyText, controlKeyText, enterKeyText, shiftKeyText, spaceKeyText, tabKeyText, escapeKeyText } from "./config/declare";
 
 const keyMap: Record<string, string> = {
 
@@ -12,6 +12,13 @@ const keyMap: Record<string, string> = {
     ArrowDown: arrowDownKeyText,
     ArrowLeft: arrowLeftKeyText,
     ArrowRight: arrowRightKeyText,
+    CapsLock: capsLockKeyText,
+    Tab: tabKeyText,
+    Enter: enterKeyText,
+    Backspace: backspaceKeyText,
+    Escape: escapeKeyText,
+
+    ' ': spaceKeyText,
 };
 
 export const compareArray = <T>(first: T[], second: T[]): boolean => {
@@ -90,4 +97,26 @@ export const parseEvent = (event: KeyboardEvent, mix: string = '+'): string => {
 
     result.push(key);
     return result.join(mix);
+};
+
+export const parseKey = (key: string): string => {
+
+    switch (key) {
+        case arrowUpKeyText: return '↑';
+        case arrowDownKeyText: return '↓';
+        case arrowLeftKeyText: return '←';
+        case arrowRightKeyText: return '→';
+
+        case controlKeyText: return '⌃ Ctrl';
+        case altKeyText: return '⌥ Alt';
+        case shiftKeyText: return '⇧ Shift';
+        case commandKeyText: return '⌘ Cmd';
+        case capsLockKeyText: return '⇪ Caps Lock';
+        case tabKeyText: return '↹ Tab';
+        case enterKeyText: return '⏎ Enter';
+        case backspaceKeyText: return '⌫ Backspace';
+        case escapeKeyText: return '⎋ Escape';
+
+        default: return key;
+    }
 };

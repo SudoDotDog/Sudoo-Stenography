@@ -43,7 +43,7 @@ export class StenographyInterceptor {
 
     private constructor(combos: string[], hidden: boolean) {
 
-        this._combos = combos;
+        this._combos = combos.map((each: string) => each.toLowerCase().replace(/ /g, ''));
 
         if (combos.length < 1) {
             throw new Error('Combo cannot be empty');

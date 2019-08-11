@@ -10,6 +10,7 @@ import { KeyboardKey } from "./components/keyboard";
 import { StenographyConfig } from "./config/config";
 import { StenographyInterceptor } from "./config/interceptor";
 import { RecipeStyle } from "./style/recipe";
+import { parseKey } from "./util";
 
 export type RecipeProps = {
 
@@ -70,6 +71,7 @@ export class Recipe extends React.Component<RecipeProps> {
 
         const splited: string[] = combo.split('+');
         return splited
+            .map((element: string) => parseKey(element))
             .map((element: string, index: number) => {
                 if (index === splited.length - 1) {
                     return (<KeyboardKey key={index}>

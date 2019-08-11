@@ -7,11 +7,19 @@
 export const controlKeyText: string = 'ctrl';
 export const altKeyText: string = 'alt';
 export const shiftKeyText: string = 'shift';
+export const capsLockKeyText: string = 'capslock';
+export const commandKeyText: string = 'cmd';
+export const tabKeyText: string = 'tab';
+export const enterKeyText: string = 'enter';
+export const backspaceKeyText: string = 'backspace';
+export const escapeKeyText: string = 'escape';
 
 export const arrowUpKeyText: string = 'up';
 export const arrowDownKeyText: string = 'down';
 export const arrowLeftKeyText: string = 'left';
 export const arrowRightKeyText: string = 'right';
+
+export const spaceKeyText: string = 'space';
 
 export type InterceptorCallback = (combos: string[]) => void;
 
