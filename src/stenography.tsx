@@ -11,7 +11,7 @@ import { Listener } from "./config/listener";
 export type StenographyProps = {
 
     readonly config: StenographyConfig;
-    readonly ref?: (ref: Listener) => void;
+    readonly listenerRef?: (ref: Listener) => any;
 };
 
 export class Stenography extends React.Component<StenographyProps> {
@@ -23,8 +23,8 @@ export class Stenography extends React.Component<StenographyProps> {
         super(props);
 
         this._listener = Listener.create(this.props.config);
-        if (props.ref && typeof props.ref === 'function') {
-            props.ref(this._listener as Listener);
+        if (props.listenerRef && typeof props.listenerRef === 'function') {
+            props.listenerRef(this._listener as Listener);
         }
     }
 
