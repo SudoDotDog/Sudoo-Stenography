@@ -111,6 +111,7 @@ export class Listener {
     private _buff(expression: string): boolean {
 
         clearTimeout(this._timer);
+        // tslint:disable-next-line: no-magic-numbers
         this._timer = setTimeout(this._resetBuffer, 1000);
         if (expression === 'control'
             || expression === 'alt'
