@@ -5,9 +5,9 @@
  */
 
 import { NAVY } from "@bwnl/shiny-inline";
-import { JSSStyle, StyleManager } from "@sudoo/jss";
+import { StyleManager, Styles } from "@sudoo/jss";
 
-const KeyboardStyleBase: JSSStyle = {
+const KeyboardStyleBase: Styles = {
 
     key: {
         lineHeight: '18px',

@@ -5,9 +5,9 @@
  */
 
 import { GRAY } from "@bwnl/shiny-inline";
-import { JSSStyle, StyleManager } from "@sudoo/jss";
+import { StyleManager, Styles } from "@sudoo/jss";
 
-const RecipeStyleBase: JSSStyle = {
+const RecipeStyleBase: Styles = {
 
     wrapper: {
         display: 'grid',
