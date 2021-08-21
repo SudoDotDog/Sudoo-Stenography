@@ -5,4 +5,4 @@
 [![npm version](https://badge.fury.io/js/%40sudoo%2Fstenography.svg)](https://www.npmjs.com/package/@sudoo/stenography)
 [![downloads](https://img.shields.io/npm/dm/@sudoo/stenography.svg)](https://www.npmjs.com/package/@sudoo/stenography)
 
-:musical_keyboard: Keyboard listener for web
+Keyboard listener for web
