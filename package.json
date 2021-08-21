@@ -25,7 +25,8 @@
     "@sudoo/jss": "^1.4.0"
   },
   "devDependencies": {
-    "@sudoo/io": "^1.6.2",
+    "@sudoo/build-utils": "^1.0.0",
+    "@sudoo/license": "^1.1.0",
     "@sudoo/mock": "^1.2.0",
     "@sudoo/react-force": "^1.6.2",
     "@sudoo/react-force-dev": "^1.6.4",
