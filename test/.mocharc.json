@@ -1,8 +1,9 @@
 {
     "spec": [
-        "test/**/*.test.ts"
+        "test/**/*.test.ts",
+        "test/**/*.test.tsx"
     ],
     "extends": [
-        "@sudoo/mocha-config"
+        "@sudoo/mocha-config-react"
     ]
 }
