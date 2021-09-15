@@ -3,7 +3,5 @@
         "test/**/*.test.ts",
         "test/**/*.test.tsx"
     ],
-    "extends": [
-        "@sudoo/mocha-config-react"
-    ]
+    "extends": "@sudoo/mocha-config-react"
 }
