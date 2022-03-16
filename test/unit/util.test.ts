@@ -19,7 +19,6 @@ describe('Given [util] helper functions', (): void => {
 
         const result: boolean = isLetter(key);
 
-        // tslint:disable-next-line
         expect(result).to.be.true;
     });
 });

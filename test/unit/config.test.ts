@@ -28,7 +28,6 @@ describe('Given {Config} class', (): void => {
 
         const target: StenographyInterceptor = StenographyInterceptor.when(a);
 
-        // tslint:disable-next-line
         expect(config.addable(target)).to.be.false;
     });
 
@@ -39,7 +38,6 @@ describe('Given {Config} class', (): void => {
 
         const target: StenographyInterceptor = StenographyInterceptor.when(b, b);
 
-        // tslint:disable-next-line
         expect(config.addable(target)).to.be.true;
     });
 
@@ -50,7 +48,6 @@ describe('Given {Config} class', (): void => {
 
         const target: StenographyInterceptor = StenographyInterceptor.when(b, c);
 
-        // tslint:disable-next-line
         expect(config.addable(target)).to.be.false;
     });
 
@@ -62,7 +59,6 @@ describe('Given {Config} class', (): void => {
 
         const target: StenographyInterceptor = StenographyInterceptor.when(a, c);
 
-        // tslint:disable-next-line
         expect(config.addable(target)).to.be.true;
     });
 
@@ -79,13 +75,9 @@ describe('Given {Config} class', (): void => {
         const target3: StenographyInterceptor = StenographyInterceptor.when(f);
         const target4: StenographyInterceptor = StenographyInterceptor.when(c, b);
 
-        // tslint:disable-next-line
         expect(config.addable(target1)).to.be.false;
-        // tslint:disable-next-line
         expect(config.addable(target2)).to.be.false;
-        // tslint:disable-next-line
         expect(config.addable(target3)).to.be.false;
-        // tslint:disable-next-line
         expect(config.addable(target4)).to.be.true;
     });
 
@@ -99,7 +91,6 @@ describe('Given {Config} class', (): void => {
 
         const target1: StenographyInterceptor = StenographyInterceptor.when(c, f, e);
 
-        // tslint:disable-next-line
         expect(config.addable(target1)).to.be.false;
     });
 });
